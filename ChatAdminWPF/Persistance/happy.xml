@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE messages SYSTEM "messages.dtd">
 <messages>
     <message>I just won tickets to my favorite band’s concert!</message>
     <message>It’s my birthday today, and I’m feeling so loved!</message>
@@ -18,3 +17,5 @@
     <message>I just bought tickets for my dream vacation destination!</message>
     <message>We’re throwing a party this weekend, and I can’t wait to celebrate with everyone.</message>
 </messages>
+
+
