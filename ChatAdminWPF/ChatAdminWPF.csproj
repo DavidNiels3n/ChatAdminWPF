@@ -9,9 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Persistence\**" />
+    <EmbeddedResource Remove="Persistence\**" />
+    <None Remove="Persistence\**" />
+    <Page Remove="Persistence\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Infastructure\" />
     <Folder Include="InterfaceAdapters\" />
-    <Folder Include="Persistence\" />
     <Folder Include="DomainLayer\" />
     <Folder Include="ApplicationLayer\" />
   </ItemGroup>
