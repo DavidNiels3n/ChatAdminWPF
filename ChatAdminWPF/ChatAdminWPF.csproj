@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Infastructure\" />
+    <Folder Include="InterfaceAdapters\" />
+    <Folder Include="Persistance\" />
+    <Folder Include="DomainLayer\" />
+    <Folder Include="ApplicationLayer\" />
+  </ItemGroup>
+
 </Project>
