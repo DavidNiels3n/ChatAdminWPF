@@ -8,11 +8,10 @@
         Title="Chat Administrator" Height="450" Width="800">
     <Grid>
         <ListBox ItemsSource="{Binding Messages}" DisplayMemberPath="Content" Margin="34,78,34,45" SelectionChanged="ListBox_SelectionChanged"/>
-        <Label Content="Sentiment: " HorizontalAlignment="Left" Margin="454,48,0,0" VerticalAlignment="Top" Height="30" Width="78"/>
-        <Image HorizontalAlignment="Left" Height="251" Margin="458,128,0,0" VerticalAlignment="Top" Width="292"/>
+        <Label Content="Sentiment: " HorizontalAlignment="Left" Margin="404,44,0,0" VerticalAlignment="Top" Height="30" Width="78" FontSize="14"/>
         <ComboBox HorizontalAlignment="Left" Margin="34,47,0,0" VerticalAlignment="Top" Width="360" Height="23"/>
         <TextBox HorizontalAlignment="Left" Margin="34,15,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="287" Height="18" TextChanged="TextBox_TextChanged"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="334,16,0,0" VerticalAlignment="Top" Width="57" Height="18"/>
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="127,402,0,0" VerticalAlignment="Top" Width="163"/>
+        <Button Content="Reset" HorizontalAlignment="Center" Margin="0,404,0,0" VerticalAlignment="Top" Width="164"/>
     </Grid>
 </Window>
