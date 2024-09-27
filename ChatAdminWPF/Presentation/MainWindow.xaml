@@ -59,16 +59,11 @@
                       Margin="0,0,0,10"
                       Height="23"/>
 
-            <!-- ScrollViewer wrapping ListBox to enable vertical scrolling -->
-            <ScrollViewer Grid.Row="1" 
-                          HorizontalScrollBarVisibility="Auto"
-                          VerticalScrollBarVisibility="Auto"
-                          >
 
-                <ListBox ItemsSource="{Binding Messages}"
-                 DisplayMemberPath="Content"
-                 SelectionChanged="ListBox_SelectionChanged" />
-            </ScrollViewer>
+            <ListBox Grid.Row="1"
+                     ItemsSource="{Binding Messages}"
+                     
+                     SelectionChanged="ListBox_SelectionChanged" />
 
             <Button Grid.Row="2" 
                     Content="Reset" 
@@ -79,23 +74,23 @@
         </Grid>
 
         <!-- SVG Image in Column 1, Row 1 -->
-    <!--    <svg:SvgViewbox Grid.Column="1" Grid.Row="1" 
+        <!--    <svg:SvgViewbox Grid.Column="1" Grid.Row="1" 
                         Source="pack://application:,,,/ChatAdminWPF;component/Resources/emoji_exited.svg"
                         Stretch="Uniform" 
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"
                         Width="300" Height="300" />
 -->
-        
 
-            <!-- Sentiment Label -->
-        <Label Grid.Column="1"
+
+        <!-- Sentiment Label -->
+        <Label x:Name="SentimentLabel"
+               Grid.Column="1"
                Content="Sentiment: " 
                HorizontalAlignment="Center" 
-               Margin="0,10,0,0" 
-               VerticalAlignment="Top" 
+               VerticalAlignment="Center" 
                Height="30" 
-               Width="78" 
+               Width="244" 
                FontSize="14"/>
     </Grid>
 </Window>
