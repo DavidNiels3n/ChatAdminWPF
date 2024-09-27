@@ -29,18 +29,14 @@ namespace ChatAdminWPF.Infastructure.Repositories
             // Load XML file
             XDocument doc = XDocument.Load(_filepath);
 
-            // Create a list to hold the messages
-            List<Message> messages = new List<Message>();
 
-            // Using a foreach loop instead of LINQ to XML with lambda
-            foreach (var m in doc.Descendants("message"))
-            {
-                Message message = new Message
-                {
-                    Content = m.Value
-                };
-                messages.Add(message);
-            }
+            // LINQ to read XML
+            var messages = doc.Descendants("message")
+                                .Select(m => new Message
+                                {
+                                    Content = m.Value
+                                })
+                                .ToList();
 
             return messages;
         }
