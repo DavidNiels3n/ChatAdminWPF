@@ -23,9 +23,7 @@
         <!-- Search Panel -->
         <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Margin="34,15,10,0">
             <Grid.ColumnDefinitions>
-                <!-- TextBox column takes up all available space -->
                 <ColumnDefinition Width="*" />
-                <!-- Button column has a fixed width -->
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
