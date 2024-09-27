@@ -16,10 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infastructure\" />
     <Folder Include="InterfaceAdapters\" />
-    <Folder Include="DomainLayer\" />
-    <Folder Include="ApplicationLayer\" />
+    <Folder Include="Presentation\view\" />
   </ItemGroup>
 
 </Project>
