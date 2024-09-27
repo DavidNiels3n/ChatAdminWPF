@@ -16,8 +16,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="emoji_exited.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="InterfaceAdapters\" />
     <Folder Include="Presentation\view\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpVectors.Wpf" Version="1.8.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="emoji_exited.svg" />
   </ItemGroup>
 
 </Project>

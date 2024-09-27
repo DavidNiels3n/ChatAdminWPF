@@ -4,14 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatAdminWPF"
+        xmlns:svg="http://sharpvectors.org/wpf"
         mc:Ignorable="d"
-        Title="Chat Administrator" Height="450" Width="800">
+        Background="DarkGray"
+        Title="Chat Administrator" Height="600" Width="1000">
     <Grid>
-        <ListBox ItemsSource="{Binding Messages}" DisplayMemberPath="Content" Margin="34,78,34,45" SelectionChanged="ListBox_SelectionChanged"/>
-        <Label Content="Sentiment: " HorizontalAlignment="Left" Margin="404,44,0,0" VerticalAlignment="Top" Height="30" Width="78" FontSize="14"/>
-        <ComboBox HorizontalAlignment="Left" Margin="34,47,0,0" VerticalAlignment="Top" Width="360" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Margin="34,15,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="287" Height="18" TextChanged="TextBox_TextChanged"/>
-        <Button Content="Search" HorizontalAlignment="Left" Margin="334,16,0,0" VerticalAlignment="Top" Width="57" Height="18"/>
-        <Button Content="Reset" HorizontalAlignment="Center" Margin="0,404,0,0" VerticalAlignment="Top" Width="164"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Search Panel -->
+        <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Margin="34,15,10,0">
+            <Grid.ColumnDefinitions>
+                <!-- TextBox column takes up all available space -->
+                <ColumnDefinition Width="*" />
+                <!-- Button column has a fixed width -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Search TextBox -->
+            <TextBox Grid.Column="0"
+             TextWrapping="Wrap" 
+             Text="Search" 
+             VerticalAlignment="Top" 
+             HorizontalAlignment="Stretch"
+             Height="18" 
+             TextChanged="TextBox_TextChanged"/>
+
+            <!-- Search Button -->
+            <Button Grid.Column="1"
+            Content="Search" 
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Top" 
+            Width="57" 
+            Height="18"/>
+        </Grid>
+
+        <!-- Content Panel -->
+        <Grid Grid.Column="0" Grid.Row="1" Margin="34,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ComboBox Grid.Row="0" 
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Top"
+                       
+                      Height="23"/>
+
+            <!-- ScrollViewer wrapping ListBox to enable vertical scrolling -->
+            <ScrollViewer Grid.Row="1" 
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto">
+                <ListBox ItemsSource="{Binding Messages}" 
+                         DisplayMemberPath="Content" 
+                         SelectionChanged="ListBox_SelectionChanged"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         Background="LightGray"/>
+            </ScrollViewer>
+
+            <Button Grid.Row="2" 
+                    Content="Reset" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,10,0,0" 
+                    VerticalAlignment="Top"
+                    Width="164"/>
+        </Grid>
+
+        <!-- SVG Image in Column 1, Row 1 -->
+    <!--    <svg:SvgViewbox Grid.Column="1" Grid.Row="1" 
+                        Source="pack://application:,,,/ChatAdminWPF;component/Resources/emoji_exited.svg"
+                        Stretch="Uniform" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top"
+                        Width="300" Height="300" />
+-->
+        
+
+            <!-- Sentiment Label -->
+        <Label Grid.Column="1"
+               Content="Sentiment: " 
+               HorizontalAlignment="Center" 
+               Margin="0,10,0,0" 
+               VerticalAlignment="Top" 
+               Height="30" 
+               Width="78" 
+               FontSize="14"/>
     </Grid>
 </Window>
