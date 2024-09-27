@@ -1,4 +1,5 @@
-﻿using ChatAdminWPF.DomainLayer;
+﻿using ChatAdminWPF.ApplicationLayer.UseCases;
+using ChatAdminWPF.DomainLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Xml.Linq;
 
 namespace ChatAdminWPF.Infastructure.Repositories
 {
-    public class MessageRepository
+    public class MessageRepository : IMessageRepository
     {
         private readonly string _filepath;
 

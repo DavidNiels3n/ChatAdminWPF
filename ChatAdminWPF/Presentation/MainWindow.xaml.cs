@@ -18,7 +18,7 @@ namespace ChatAdminWPF.Presentation
             InitializeComponent();
 
             // Set the file path to your XML file
-            var repository = new MessageRepository("C:\\Users\\david\\Source\\Repos\\ChatAdminWPF\\ChatAdminWPF\\Persistance\\happy.xml");
+            var repository = new MessageRepository(@"..\\..\\..\\Persistance\\happy.xml");
             var service = new MessageService(repository);
             var viewModel = new MessageViewModel(service);
 

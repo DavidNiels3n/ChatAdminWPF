@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ChatAdminWPF.ApplicationLayer.UseCases
 {
-    public class MessageService
+    public class MessageService : IMessageService
     {
         private readonly MessageRepository _messageRepo;
 
