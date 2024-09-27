@@ -66,13 +66,10 @@
                           HorizontalScrollBarVisibility="Auto"
                           VerticalScrollBarVisibility="Auto"
                           >
-                          
-                <ListBox ItemsSource="{Binding Messages}" 
-                         DisplayMemberPath="Content" 
-                         SelectionChanged="ListBox_SelectionChanged"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Stretch"
-                         Background="LightGray"/>
+
+                <ListBox ItemsSource="{Binding Messages}"
+                 DisplayMemberPath="Content"
+                 SelectionChanged="ListBox_SelectionChanged" />
             </ScrollViewer>
 
             <Button Grid.Row="2" 
