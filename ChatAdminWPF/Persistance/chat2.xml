@@ -1,0 +1,23 @@
+<!DOCTYPE messages [
+<!ELEMENT messages (message+)>
+<!ELEMENT message (#PCDATA)>
+]>
+
+<messages>
+    <message>I'm feeling a bit down today.</message>
+    <message>I'm sorry to hear that. Would you like to talk about it?</message>
+    <message>It's been raining all day, and it matches my mood.</message>
+    <message>Rainy days can be tough. I'm here if you need someone to listen.</message>
+    <message>I didn't get the promotion I was hoping for.</message>
+    <message>That must be disappointing. Remember, your efforts are valued even if it doesn't feel like it right now.</message>
+    <message>I miss my friends; we haven't talked in a while.</message>
+    <message>Reconnecting can be hard. Maybe reaching out could help bridge the gap.</message>
+    <message>Just feeling lonely tonight.</message>
+    <message>Loneliness can be heavy. You're not alone, and I'm here for you.</message>
+    <message>Things haven't been going my way lately.</message>
+    <message>I'm sorry to hear that. Sometimes talking about it can help.</message>
+    <message>I lost something important to me today.</message>
+    <message>Loss can be difficult to process. Take your time, and know that it's okay to feel sad.</message>
+    <message>I wish things were different.</message>
+    <message>Change can be challenging. What would you like to see change?</message>
+</messages>

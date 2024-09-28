@@ -52,15 +52,20 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+           
+             <ComboBox 
+                x:Name="ChatSelector"
+                Grid.Row="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Margin="0,0,0,10"
+                Height="23"
+                SelectionChanged="ChatSelector_SelectionChanged" />
 
-            <ComboBox Grid.Row="0" 
-                      HorizontalAlignment="Stretch"
-                      VerticalAlignment="Top"
-                      Margin="0,0,0,10"
-                      Height="23"/>
 
 
-            <ListBox Grid.Row="1"
+            <ListBox x:Name="MessagesListBox"
+                     Grid.Row="1"
                      ItemsSource="{Binding Messages}"
                      
                      SelectionChanged="ListBox_SelectionChanged" />

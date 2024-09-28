@@ -3,6 +3,9 @@ using Presentation.ViewModels;
 using ChatAdminWPF.Infastructure.Repositories;
 using System.Text;
 using System.Windows;
+using System.IO;
+using System.Linq;
+using System.Windows.Controls;
 
 
 
@@ -14,13 +17,15 @@ namespace ChatAdminWPF.Presentation
     public partial class MainWindow : Window
     {
         private readonly SentimentAnalysis _sentimentAnalysis;
-        private readonly MessageService _messageService;
+        private MessageService _messageService;
+        private MessageViewModel _viewModel;
+        private Dictionary<string, string> _xmlFiles = new Dictionary<string, string>();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            //Filepath for each sentiment txt file
+            // Filepath for each sentiment txt file
             var sentimentFilePaths = new Dictionary<string, string>
             {
                 { "happy", @"..\\..\\..\\Persistance\\HappyList.txt" },
@@ -28,31 +33,76 @@ namespace ChatAdminWPF.Presentation
                 { "angry", @"..\\..\\..\\Persistance\\AngryList.txt" }
             };
 
-           
             _sentimentAnalysis = new SentimentAnalysis(sentimentFilePaths);
+            _viewModel = new MessageViewModel(null);
+            DataContext = _viewModel;
 
-            // Filepath to XML
-            var repository = new MessageRepository(@"..\\..\\..\\Persistance\\happy.xml");
-            _messageService = new MessageService(repository);
-            var viewModel = new MessageViewModel(_messageService);
+            // Load available XML files into ChatSelector
+            LoadXmlFileNames();
 
-            // Set the DataContext to the ViewModel for data binding
-            DataContext = viewModel;
-
-            PerformSentimentAnalysis();
+            // Initialize with the first XML file if possible 
+            if (ChatSelector.Items.Count > 0)
+            {
+                ChatSelector.SelectedIndex = 0;
+                ChatSelector_SelectionChanged(null, null);
+            }
         }
+
+        
+        private void LoadXmlFileNames()
+        {
+            // Directory containing files
+            string xmlDirectory = @"..\\..\\..\\Persistance";
+
+            if (Directory.Exists(xmlDirectory))
+            {
+                var xmlFiles = Directory.GetFiles(xmlDirectory, "*.xml");
+
+                foreach (var filePath in xmlFiles)
+                {
+                    var fileName = Path.GetFileName(filePath);
+                    var displayName = Path.GetFileNameWithoutExtension(filePath);
+
+                    _xmlFiles.Add(displayName, filePath);
+                    ChatSelector.Items.Add(displayName);
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine($"Directory not found: {xmlDirectory}");
+            }
+        }
+
+        // Event handler for ChatSelector selection change
+        private void ChatSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedDisplayName = ChatSelector.SelectedItem as string;
+
+            if (!string.IsNullOrEmpty(selectedDisplayName) && _xmlFiles.ContainsKey(selectedDisplayName))
+            {
+                string xmlFilePath = _xmlFiles[selectedDisplayName];
+
+                // Load messages from the selected XML file
+                var repository = new MessageRepository(xmlFilePath);
+                _messageService = new MessageService(repository);
+
+                
+                _viewModel.LoadMessages(_messageService);
+
+                // Re-run sentiment analysis
+                PerformSentimentAnalysis();
+            }
+        }
+
 
         // Method to perform sentiment analysis
         private void PerformSentimentAnalysis()
         {
-            // Get messages from the MessageService
-            var messages = _messageService.GetMessages();
+            // Convert ObservableCollection to List
+            var messages = _viewModel.Messages.ToList();
 
-       
             var sentimentCounts = _sentimentAnalysis.AnalyseSentiment(messages);
             var overallSentiment = _sentimentAnalysis.DetermineOverallSentiment(sentimentCounts);
-
-           
 
             var sentimentResult = new StringBuilder();
             sentimentResult.AppendLine("Sentiment Counts:");
@@ -62,11 +112,11 @@ namespace ChatAdminWPF.Presentation
             }
             sentimentResult.AppendLine($"Overall Sentiment: {overallSentiment}");
 
-            // Display the sentiment result in label
             SentimentLabel.Content = "Sentiment: " + overallSentiment;
         }
 
-       
+
+
         private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             

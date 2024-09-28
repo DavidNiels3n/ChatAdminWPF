@@ -1,0 +1,23 @@
+<!DOCTYPE messages [
+<!ELEMENT messages (message+)>
+<!ELEMENT message (#PCDATA)>
+]>
+
+<messages>
+    <message>I'm really annoyed with how today turned out.</message>
+    <message>I'm sorry to hear that. Want to talk about what happened?</message>
+    <message>Why does everything have to be so difficult?</message>
+    <message>It sounds like you're frustrated. How can I assist you?</message>
+    <message>I'm fed up with all these problems.</message>
+    <message>That's understandable. Let's see if we can find a solution together.</message>
+    <message>People just don't listen!</message>
+    <message>Feeling unheard can be very frustrating. I'm here to listen.</message>
+    <message>I'm tired of repeating myself over and over.</message>
+    <message>I get that it can be exhausting. How can we make things better?</message>
+    <message>This situation is really getting on my nerves.</message>
+    <message>I'm sorry it's affecting you this way. Let's talk it through.</message>
+    <message>Why can't anyone get things right the first time?</message>
+    <message>Mistakes can be frustrating. Let's figure out a way forward.</message>
+    <message>I've had it up to here with all this nonsense.</message>
+    <message>It's tough dealing with such issues. I'm here if you want to discuss it.</message>
+</messages>

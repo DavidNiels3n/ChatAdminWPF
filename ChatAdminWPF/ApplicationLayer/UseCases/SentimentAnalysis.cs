@@ -59,10 +59,30 @@ namespace ChatAdminWPF.ApplicationLayer.UseCases
         // Determine the overall sentiment
         public string DetermineOverallSentiment(Dictionary<string, int> sentimentCounts)
         {
-            //get the sentiment with the highest count
-            return sentimentCounts
-                .OrderByDescending(sc => sc.Value)
-                .FirstOrDefault().Key;
+            var maxCount = sentimentCounts.Values.Max();
+
+            if (maxCount == 0)
+            {
+                // No keywords found
+                return "Neutral";
+            }
+
+            var topSentiments = sentimentCounts
+                .Where(sc => sc.Value == maxCount)
+                .Select(sc => sc.Key)
+                .ToList();
+
+            if (topSentiments.Count == 1)
+            {
+                // Only one sentiment has the highest count
+                return topSentiments[0];
+            }
+            else
+            {
+                //sentiment keywords are tied
+                return "Mixed";
+            }
         }
+
     }
 }

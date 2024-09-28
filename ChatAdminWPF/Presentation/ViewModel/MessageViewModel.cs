@@ -6,10 +6,8 @@ namespace Presentation.ViewModels
 {
     public class MessageViewModel
     {
-        private readonly MessageService _messageService;
-
-        public ObservableCollection<Message> Messages { get; set; }
-
+        private MessageService _messageService;
+        public ObservableCollection<Message> Messages { get; }
         public MessageViewModel(MessageService messageService)
         {
             _messageService = messageService;
@@ -18,13 +16,27 @@ namespace Presentation.ViewModels
             LoadMessages();
         }
 
-        public void LoadMessages()
+        public void LoadMessages(MessageService messageService = null)
         {
-            var messages = _messageService.GetMessages();
-            Messages.Clear();
-            foreach (var message in messages)
+            if (messageService != null)
             {
-                Messages.Add(message);
+                _messageService = messageService;
+            }
+
+            if (_messageService != null)
+            {
+                var messages = _messageService.GetMessages();
+
+         
+                Messages.Clear();
+                foreach (var message in messages)
+                {
+                    Messages.Add(message);
+                }
+            }
+            else
+            {
+                Messages.Clear();
             }
         }
     }
