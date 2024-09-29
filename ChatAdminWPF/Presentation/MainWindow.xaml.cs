@@ -126,5 +126,12 @@ namespace ChatAdminWPF.Presentation
         {
            
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Call the DeleteSelectedMessage method in the ViewModel
+            _viewModel.DeleteMessageCommand.Execute(null);
+        }
+
     }
 }

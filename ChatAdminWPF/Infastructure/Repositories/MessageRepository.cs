@@ -41,5 +41,16 @@ namespace ChatAdminWPF.Infastructure.Repositories
             return messages;
         }
 
+        public void DeleteMessage(string messageContent)
+        {
+            var xdoc = XDocument.Load(_filepath);
+            var messageToDelete = xdoc.Descendants("message")
+                                      .FirstOrDefault(m => m.Value == messageContent);
+            if (messageToDelete != null)
+            {
+                messageToDelete.Remove();  // Remove the message node
+                xdoc.Save(_filepath);   // Save the updated XML
+            }
+        }
     }
 }

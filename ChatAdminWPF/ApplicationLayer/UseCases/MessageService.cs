@@ -21,5 +21,11 @@ namespace ChatAdminWPF.ApplicationLayer.UseCases
         {
             return _messageRepo.GetMessages();
         }
+
+        public void DeleteMessage(string messageContent)
+        {
+            _messageRepo.DeleteMessage(messageContent); 
+        }
+
     }
 }
